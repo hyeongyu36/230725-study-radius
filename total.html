@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>피자 주문</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      #container {
+        margin: 0 auto;
+        height: 500px;
+        width: 400px;
+        height: 600px;
+        padding: 30px 30px;
+        background: url("pizza.jpg");
+        background-size: cover;
+        margin-top: 20px;
+      }
+      #container h1 {
+        margin-left: 10px;
+      }
+      fieldset {
+        width: 95%;
+        margin: 0 auto;
+        margin-top: 20px;
+        padding: 20px 10px;
+        border: none;
+        background-color: rgba(255, 246, 213, 0.589);
+        border-radius: 3px;
+      }
+      input[type="checkbox"]:checked {
+        accent-color: rgb(255, 66, 66);
+      }
+      legend {
+        font-weight: bold;
+      }
+      #total {
+        border: none;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>피자 주문</h1>
+      <form>
+        <fieldset>
+          <legend>사이즈</legend>
+          <p>Large - 24,000원</p>
+          <!-- <label><input type="radio" />Large</label>
+          <label><input type="radio" />Large</label> -->
+        </fieldset>
+        <fieldset>
+          <legend>추가 주문</legend>
+          <p></p>
+          <label for="pickle">
+            <input
+              type="checkbox"
+              class="checkbox"
+              id="pickle"
+              name="pickle"
+              value="800"
+            />피클(800원)</label
+          >
+          <label for="chilly">
+            <input
+              type="checkbox"
+              class="checkbox"
+              id="chilly"
+              name="chilly"
+              value="300"
+            />칠리소스(300원)</label
+          >
+          <label for="deeping">
+            <input
+              type="checkbox"
+              class="checkbox"
+              id="deeping"
+              name="deeping"
+              value="200"
+            />디핑 소스(200원)</label
+          >
+          <label for="stick">
+            <input
+              type="checkbox"
+              class="checkbox"
+              id="stick"
+              name="stick"
+              value="4800"
+            />치즈스틱(4개, 4,800원)</label
+          >
+          <label for="salad">
+            <input
+              type="checkbox"
+              class="checkbox"
+              id="salad"
+              name="salad"
+              value="2400"
+            />콘 샐러드(2,400원)</label
+          >
+        </fieldset>
+        <fieldset>
+          <legend>합계</legend>
+          <input type="text" id="total" name="total" class="price" readonly />
+        </fieldset>
+      </form>
+    </div>
+    <script>
+      let price = 24000;
+      const sideMenu = document.querySelectorAll(".checkbox");
+      const total = document.querySelector("#total");
+
+    //   price변수 자체적으로 콤마기능 추가
+    price = price.toLocaleString()
+      total.value = `${price}원`;
+      for (i = 0; i < sideMenu.length; i++) {
+        sideMenu[i].onclick = function () {
+          if (this.checked == true) {
+            price += parseInt(this.value);
+          } else {
+            price -= parseInt(this.value);
+          }
+          total.value = `${price}원`;
+        };
+      }
+      console.log(price);
+    </script>
+  </body>
+</html>

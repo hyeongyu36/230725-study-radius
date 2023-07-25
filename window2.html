@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>window.location 예제</title>
+  </head>
+  <body>
+    <p>현재 페이지의 URL : <span id="currentUrl"></span></p>
+    <button onclick="goBack()">이전페이지로</button>
+    <button onclick="goForward()">앞으로 이동</button>
+    <button onclick="gotoGoogle()">구글로 이동</button>
+    <script>
+      function showCurrentUrl() {
+        const currentUrlSpan = document.getElementById("currentUrl");
+        currentUrlSpan.textContent = window.location.href;
+      }
+      // 이전페이지로 이동하는 함수
+      function goBack() {
+        history.back();
+      }
+      // 앞으로 이동하는 함수
+      function goForward() {
+        history.forward();
+      }
+      // 구글로 이동하는 함수
+      function gotoGoogle() {
+        history.go("http://www.google.com");
+      }
+      showCurrentUrl();
+    </script>
+  </body>
+</html>
